@@ -17,7 +17,7 @@
     "morgan": "~1.9.1"
   },
   "projectConfig": {
-    "mongoConnectionUrl": "mongodb+srv://faruk123:faruk123@cluster0.oyacnzp.mongodb.net/",
+    "mongoConnectionUrl": "mongodb+srv://:@cluster0.oyacnzp.mongodb.net/",
     "serverIp": "10.74.0.145",
     "serverPort": 3000
   }
