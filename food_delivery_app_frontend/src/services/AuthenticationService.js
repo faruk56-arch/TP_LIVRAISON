@@ -41,10 +41,11 @@ const login = async user => {
       ApiContants.BACKEND_API.LOGIN,
       requestBody,
     );
+    
     return loginResponse?.data;
   } catch (error) {
     console.log(error);
-    return {status: false, message: 'Oops! Something went wrong'};
+    return {status: false, message: 'Oops! Something went wrong in login'};
   }
 };
 
