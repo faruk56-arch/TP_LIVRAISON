@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -8,13 +8,13 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import {Colors, Fonts, Images} from '../contants';
+import { Colors, Fonts, Images } from '../contants';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {Separator} from '../components';
-import {Display} from '../utils';
+import { Separator } from '../components';
+import { Display } from '../utils';
 import Feather from 'react-native-vector-icons/Feather';
-import {AuthenicationService} from '../services';
+import { AuthenicationService } from '../services';
 import LottieView from 'lottie-react-native';
 
 const inputStyle = state => {
@@ -44,7 +44,7 @@ const showMarker = state => {
           name="checkcircleo"
           color={Colors.SECONDARY_GREEN}
           size={18}
-          style={{marginLeft: 5}}
+          style={{ marginLeft: 5 }}
         />
       );
     case 'invalid':
@@ -53,7 +53,7 @@ const showMarker = state => {
           name="closecircleo"
           color={Colors.DEFAULT_RED}
           size={18}
-          style={{marginLeft: 5}}
+          style={{ marginLeft: 5 }}
         />
       );
     default:
@@ -61,7 +61,7 @@ const showMarker = state => {
   }
 };
 
-const SignupScreen = ({navigation}) => {
+const SignupScreen = ({ navigation }) => {
   const [isPasswordShow, setIsPasswordShow] = useState(false);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -82,12 +82,16 @@ const SignupScreen = ({navigation}) => {
     setIsLoading(true);
     AuthenicationService.register(user).then(response => {
       setIsLoading(false);
-      if (!response?.status) {
+      if (response?.status) {
+        alert('User created successfully');
+        // navigation.navigate('Login');
+        navigation.navigate('RegisterPhone')
+      } else {
         setErrorMessage(response?.message);
       }
     });
-    // navigation.navigate('RegisterPhone')
   };
+
 
   const checkUserExist = async (type, value) => {
     if (value?.length > 0) {
@@ -140,7 +144,7 @@ const SignupScreen = ({navigation}) => {
             name="user"
             size={22}
             color={Colors.DEFAULT_GREY}
-            style={{marginRight: 10}}
+            style={{ marginRight: 10 }}
           />
           <TextInput
             placeholder="Username"
@@ -148,7 +152,7 @@ const SignupScreen = ({navigation}) => {
             selectionColor={Colors.DEFAULT_GREY}
             style={styles.inputText}
             onChangeText={text => setUsername(text)}
-            onEndEditing={({nativeEvent: {text}}) =>
+            onEndEditing={({ nativeEvent: { text } }) =>
               checkUserExist('username', text)
             }
           />
@@ -162,7 +166,7 @@ const SignupScreen = ({navigation}) => {
             name="mail"
             size={22}
             color={Colors.DEFAULT_GREY}
-            style={{marginRight: 10}}
+            style={{ marginRight: 10 }}
           />
           <TextInput
             placeholder="Email"
@@ -170,7 +174,7 @@ const SignupScreen = ({navigation}) => {
             selectionColor={Colors.DEFAULT_GREY}
             style={styles.inputText}
             onChangeText={text => setEmail(text)}
-            onEndEditing={({nativeEvent: {text}}) =>
+            onEndEditing={({ nativeEvent: { text } }) =>
               checkUserExist('email', text)
             }
           />
@@ -184,7 +188,7 @@ const SignupScreen = ({navigation}) => {
             name="lock"
             size={22}
             color={Colors.DEFAULT_GREY}
-            style={{marginRight: 10}}
+            style={{ marginRight: 10 }}
           />
           <TextInput
             secureTextEntry={isPasswordShow ? false : true}
@@ -198,7 +202,7 @@ const SignupScreen = ({navigation}) => {
             name={isPasswordShow ? 'eye' : 'eye-off'}
             size={22}
             color={Colors.DEFAULT_GREY}
-            style={{marginRight: 10}}
+            style={{ marginRight: 10 }}
             onPress={() => setIsPasswordShow(!isPasswordShow)}
           />
         </View>

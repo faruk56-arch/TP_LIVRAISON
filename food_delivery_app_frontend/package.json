@@ -29,7 +29,7 @@
     "@babel/core": "^7.20.0"
   },
   "projectConfig": {
-    "backendApiBaseUrl": "http://192.168.1.38:3000"
+    "backendApiBaseUrl": "http://10.74.0.145:3000"
   },
   "private": true
 }
