@@ -17,8 +17,8 @@ const MongoDB = require("./services/mongodb.service");
 const serverPort = require("./config").serverConfig.port;
 
 // Replace these with your actual Twilio Account SID and Auth Token
-const accountSid = 'AC4937484868d121330897e48a1d02c5b6';
-const authToken = '50c11a6869c077a769448315d6ac9b0c';
+const accountSid = '';
+const authToken = '';
 const twilioPhoneNumber = '+1 417 541 3216'; // replaced with your Twilio phone number
 
 const client = new twilio(accountSid, authToken);
